@@ -12,3 +12,4 @@
 /home/kali/Programming/Learning/Csharp/lab2.1/obj/Debug/net8.0/lab2.1.pdb
 /home/kali/Programming/Learning/Csharp/lab2.1/obj/Debug/net8.0/lab2.1.genruntimeconfig.cache
 /home/kali/Programming/Learning/Csharp/lab2.1/obj/Debug/net8.0/ref/lab2.1.dll
+/home/kali/Programming/Learning/Csharp/lab2.1/obj/Debug/net8.0/lab2.1.sourcelink.json

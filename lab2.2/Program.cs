@@ -14,9 +14,9 @@ internal class Program {
     Console.WriteLine($"Пересекаются ли отрезки:\nМетод intersect(): {LineSegment.intersect(ls1, ls2)}\nls1<ls2: {ls1<ls2}\n\nДлина ls1: {!ls1}\n; Расширяем ls2: {++ls2}\n");
     int x = ls2;
     Console.WriteLine($"Неявное преобразование в int для ls2: {x};\nЯвное преобразование в double ls2: {(double)ls2}\n");
-    d1 = getDouble("Введите вещественное число для левостороннего вычитания из ls1:");
-    d2 = getDouble("Введите вещественное число для правостороннего вычитания из ls1:");
-    Console.WriteLine($"ls1-d1: {ls1-d1}\nd2-ls1: {d2-ls1}");
+    int i1 = getInt("Введите целое число для левостороннего вычитания из ls1:");
+    int i2 = getInt("Введите целое число для правостороннего вычитания из ls1:");
+    Console.WriteLine($"\ni1-ls1 = {i1-ls1}\nls1-i2 = {ls1-i2}");
   }
 
   private static double getDouble(string message) {
@@ -44,6 +44,24 @@ internal class Program {
 
     return Convert.ToDouble(inp);
   }
+
+  private static int getInt(string message) {
+    String inp;
+    bool isValid;
+    
+    do {
+      isValid = true;
+      Console.WriteLine(message);
+
+      inp = Console.ReadLine();
+
+      for(int i=Convert.ToInt32(inp[0] == '-'); i<inp.Length && isValid; ++i)
+        if(!checkSym(inp[i]) || inp[i] == '.')
+          isValid = false;
+      } while(!isValid && inp.Length > Convert.ToInt32(inp[0] == '-' ));
+
+    return Convert.ToInt32(inp);
+  } 
 
   private static bool checkSym(char ch) {
     if(ch == '.' || Convert.ToInt32(ch) >= Convert.ToInt32('0') && Convert.ToInt32(ch) <= Convert.ToInt32('9'))

@@ -14,11 +14,11 @@ internal class Program {
 
     Console.WriteLine("Creating civil:\n");
     Civilian c1 = new Civilian("TestName", 15, false, false);
-    Console.WriteLine($"Civilian: {c1}\nIs he should get passport: {c1.shouldGetPass()}\nIs he really civil: {c1.isCivil()}\n");
+    Console.WriteLine($"Civilian: {c1}\nIs he local: {c1.isLocal}\nIs he should get passport: {c1.shouldGetPass()}\nIs he really civil: {c1.isCivil()}\n");
   
     Console.WriteLine("Creating civil with incorrect age:\n");
     c1 = new Civilian("TestName2", -8, true, false);
-    Console.WriteLine($"Civilian: {c1}\nIs he should get passport: {c1.shouldGetPass()}\nIs he really civil: {c1.isCivil()}\n");
+    Console.WriteLine($"Civilian: {c1}\nIs he local: {c1.isLocal}\nIs he should get passport: {c1.shouldGetPass()}\nIs he really civil: {c1.isCivil()}\n");
     Console.WriteLine("Automatic test complete\n\n\n");
   }
 }
