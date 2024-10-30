@@ -25,7 +25,7 @@ class LineSegment {
   static public bool intersect(LineSegment ls1, LineSegment ls2) {
     if(ls1.X > ls2.X)
       return intersect(ls2, ls1);
-    if( !(ls1.Y < ls2.X && ls1.X < ls2.Y) )
+    if( ls1.Y >= ls2.X )
       return true;
     return false;
   }
