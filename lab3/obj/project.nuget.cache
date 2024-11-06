@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "NyR0iTjjePDm5G/B/mwHF4HDq0RDu6zepuW/H9a0zNyUCmz+T2QnGdBt2jVbTe+H7qv3aWu1wLEWLb/ukb3JGg==",
+  "success": true,
+  "projectFilePath": "/home/kali/Programming/Learning/Csharp/lab3/lab3.csproj",
+  "expectedPackageFiles": [
+    "/home/kali/.nuget/packages/microsoft.aspnetcore.app.ref/8.0.7/microsoft.aspnetcore.app.ref.8.0.7.nupkg.sha512"
+  ],
+  "logs": []
+}
