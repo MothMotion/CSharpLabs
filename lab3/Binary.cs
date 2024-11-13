@@ -138,13 +138,12 @@ public class Binary {
   public static void t7_Read() {
     using (System.IO.StreamReader sr = new StreamReader("t7.txt")) {
       string line = sr.ReadLine();
-      int temp, counter = 0, res = 1;
+      int temp, res = 1;
       while(line != null) {
         foreach(string val in line.Split(' ')) {
           temp = Int32.Parse(val);
-          System.Console.Write($"{temp} c={counter} ");
-          ++counter;
-          if(counter%2 == 0)
+          System.Console.Write($"{temp} ");
+          if(temp%2 == 0)
             res *= temp;
         }
         System.Console.WriteLine();
