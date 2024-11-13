@@ -1,7 +1,10 @@
 using System;
 
 class Massive {
-  public int[,] m;
+  private int[,] m;
+  public int[,] GetM() {
+    return m;
+  }
 
   public Massive(int x, int y) {
     m = new int[x,y];
