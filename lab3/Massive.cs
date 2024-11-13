@@ -32,11 +32,12 @@ class Massive {
   }
 
   public void checkMarks() {
+    System.Console.WriteLine($"Для отрицательных значений берётся abs.\n");
     double average;
     for(int i=0; i<m.GetLength(0); ++i) {
       average = 0;
       for(int j=0; j<m.GetLength(1); ++j)
-        average += m[i,j];
+        average += Math.Abs(m[i,j]);
       average /= m.GetLength(1);
 
       if(average > 4.5)

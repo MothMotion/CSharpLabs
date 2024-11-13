@@ -53,7 +53,7 @@ internal class Program {
       input = System.Console.ReadLine();
 
       valid = int.TryParse(input, out res);
-    } while(!valid && res>0);
+    } while(!valid || res<=0);
     return res;
   }
   
