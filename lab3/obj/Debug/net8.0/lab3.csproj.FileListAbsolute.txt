@@ -1,0 +1,15 @@
+/home/kali/Programming/Learning/Csharp/lab3/obj/Debug/net8.0/lab3.GeneratedMSBuildEditorConfig.editorconfig
+/home/kali/Programming/Learning/Csharp/lab3/obj/Debug/net8.0/lab3.AssemblyInfoInputs.cache
+/home/kali/Programming/Learning/Csharp/lab3/obj/Debug/net8.0/lab3.AssemblyInfo.cs
+/home/kali/Programming/Learning/Csharp/lab3/obj/Debug/net8.0/lab3.csproj.CoreCompileInputs.cache
+/home/kali/Programming/Learning/Csharp/lab3/obj/Debug/net8.0/lab3.sourcelink.json
+/home/kali/Programming/Learning/Csharp/lab3/bin/Debug/net8.0/lab3
+/home/kali/Programming/Learning/Csharp/lab3/bin/Debug/net8.0/lab3.deps.json
+/home/kali/Programming/Learning/Csharp/lab3/bin/Debug/net8.0/lab3.runtimeconfig.json
+/home/kali/Programming/Learning/Csharp/lab3/bin/Debug/net8.0/lab3.dll
+/home/kali/Programming/Learning/Csharp/lab3/bin/Debug/net8.0/lab3.pdb
+/home/kali/Programming/Learning/Csharp/lab3/obj/Debug/net8.0/lab3.dll
+/home/kali/Programming/Learning/Csharp/lab3/obj/Debug/net8.0/refint/lab3.dll
+/home/kali/Programming/Learning/Csharp/lab3/obj/Debug/net8.0/lab3.pdb
+/home/kali/Programming/Learning/Csharp/lab3/obj/Debug/net8.0/lab3.genruntimeconfig.cache
+/home/kali/Programming/Learning/Csharp/lab3/obj/Debug/net8.0/ref/lab3.dll
