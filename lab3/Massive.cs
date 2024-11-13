@@ -21,7 +21,7 @@ class Massive {
       Random rng = new Random();
       for(int i=0; i < m.GetLength(0); ++i)
         for(int j=0; j < m.GetLength(1); ++j)
-          m[i,j] = rng.Next(m[max(i-1, 0), j]+1, m[max(i-1, 0), j]+101);
+          m[i,j] = m[Math.Max(i-1, 0), j] + rng.Next(1, 101);
     } else {
       int counter = x*y;
       int num = 2;
