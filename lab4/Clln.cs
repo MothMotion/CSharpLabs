@@ -53,10 +53,10 @@ public class Clln<T> {
       HashSet<char> uniqueSym = new HashSet<char>();
       char temp = (char)sr.Read();
       while(temp != null) {
-        if(!uniqueSym.Contains(temp))
+        if(isValid(c) && !uniqueSym.Contains(temp))
           uniqueSym.Add(temp);
       }
-      Console.WriteLine("В файле есть следующие уникальные символы:");
+      Console.WriteLine($"В файле есть {uniqueSym} уникальных(-ый) символов(-а):");
       foreach(char c in uniqueSym)
         Console.Write($"{c} ");
       Console.WriteLine();
@@ -67,6 +67,12 @@ public class Clln<T> {
     foreach (T val in L)
       if(v.Equals(val))
         return true;
+    return false;
+  }
+
+  private static bool isValid(char c) {
+    if((int)'а' <= (int)c && (int)c <= (int)'Я' || c == 'ё' || c == 'Ё')
+      return true;
     return false;
   }
 }

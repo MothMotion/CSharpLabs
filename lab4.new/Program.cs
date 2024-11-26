@@ -1,8 +1,11 @@
 ﻿using System;
-using System.Diagnostics.Metrics;
 
 internal class Program {
   private static void Main(string[] args) {
+    Console.WriteLine("Задание 4:");
+    Clln<int>.checkSym("inp.txt");
+    Console.WriteLine("\n\n\n");
+
     Console.WriteLine("Введите списки L1, L2, и будет выведено их пересечение L.");
     List<int> L1 = new List<int>(securedList(securedInt("Введите размер списка L1:", true)));
     List<int> L2 = new List<int>(securedList(securedInt("Введите размер списка L2:", true)));

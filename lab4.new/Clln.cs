@@ -49,16 +49,24 @@ public class Clln<T> {
   }
 
   public static void checkSym(string path) {
-    using(StreamReader sr = new StreamReader(path)) {
-      HashSet<char> uniqueSym = new HashSet<char>();
-      char temp = (char)sr.Read();
-      while(temp != null) {
-        if(!uniqueSym.Contains(temp))
-          uniqueSym.Add(temp);
+    using(TextReader sr = new StreamReader(path)) {
+      if(sr == null) {
+        Console.WriteLine("Невозможно открыть файл.");
+        return;
       }
-      Console.WriteLine("В файле есть следующие уникальные символы:");
+      
+      HashSet<char> uniqueSym = new HashSet<char>();
+      string temp = sr.ReadLine(); // <-- костыль
+      while(temp != null) {
+        foreach(char c in temp)
+          if(isValid(c) && !uniqueSym.Contains(c))
+            uniqueSym.Add(c);
+        temp = sr.ReadLine();
+      }
+
+      Console.WriteLine($"Количество уникальных символов в файле: {uniqueSym.Count}:");
       foreach(char c in uniqueSym)
-        Console.Write($"{c} ");
+        Console.Write($"\"{c}\" ");
       Console.WriteLine();
     }
   }
@@ -67,6 +75,12 @@ public class Clln<T> {
     foreach (T val in L)
       if(v.Equals(val))
         return true;
+    return false;
+  }
+
+  private static bool isValid(char c) {
+    if((int)'а' <= (int)c && (int)c <= (int)'Я' || c == 'ё' || c == 'Ё')
+      return true;
     return false;
   }
 }
