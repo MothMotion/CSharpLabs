@@ -79,7 +79,7 @@ public class Clln<T> {
   }
 
   private static bool isValid(char c) {
-    if((int)'а' <= (int)c && (int)c <= (int)'Я' || c == 'ё' || c == 'Ё')
+    if((int)'А' <= (int)c && (int)c <= (int)'я' || c == 'ё' || c == 'Ё')
       return true;
     return false;
   }

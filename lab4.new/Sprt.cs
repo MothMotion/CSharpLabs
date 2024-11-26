@@ -1,7 +1,7 @@
 using System;
 using System.Xml.Serialization;
 
-class Sprt {
+public class Sprt {
   private string surname;
   private string name;
   private int[] points; // <-- Стандартный класс SortedSet тут не канает, потому что "ДОДЕЛАЙ САМ"
@@ -60,7 +60,7 @@ class Sprt {
 
 
   public static void SerializableSprt(Sprt[] sports, string pathTo) {
-    using (FileStream fs = new FileStream(pathTo, FileMode.Create)) {
+    using (FileStream fs = new FileStream(pathTo, FileMode.OpenOrCreate)) {
       XmlSerializer xmlSer = new XmlSerializer(typeof(Sprt[]));
       xmlSer.Serialize(fs, sports);
     }
