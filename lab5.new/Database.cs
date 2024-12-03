@@ -101,7 +101,7 @@ class Database {
         if(findID(sheetIndex, id) == -1) {
             IOPLog.write("Записи с данным идентификатором нет"); return;}
         removeData(sheetIndex, id); // lazy update.1
-        updateData(sheetIndex, id); // lazy update.2
+        addData(sheetIndex, id); // lazy update.2
     }
 
 
