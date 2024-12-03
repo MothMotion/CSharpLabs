@@ -6,7 +6,7 @@ internal class Program {
     static IWorkbook book;
     static Database db = new();
     private static void Main(string[] args) {
-        IOPLog.init(securedBool("Записывать в старый файл?", false));
+        IOPLog.init(securedBool("Записывать в старый файл? (true/false)", false));
         try {
             using (FileStream fs = new FileStream("LR5-var11.xlsx", FileMode.Open, FileAccess.Read))
                 book = new XSSFWorkbook(fs);
