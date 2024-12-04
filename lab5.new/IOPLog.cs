@@ -1,5 +1,5 @@
 static class IOPLog { // Input-Output-Process Logger
-    static TextWriter tw;
+    static private TextWriter tw;
 
     public static void init(bool appendFile) {
         tw = new StreamWriter("log.lg", appendFile);
@@ -16,5 +16,10 @@ static class IOPLog { // Input-Output-Process Logger
         tw.WriteLine($"WRITE_OUTPUT[{mes}]");
         if(consoleWrite)
             Console.WriteLine(mes);
+        tw.Flush();
+    }
+
+    public static void close() {
+        tw.Close();
     }
 }

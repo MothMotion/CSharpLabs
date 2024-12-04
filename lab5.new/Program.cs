@@ -29,6 +29,8 @@ internal class Program {
                 default : Console.WriteLine("Недопустимое значение."); break;
             }
         } while(taskNum != 0);
+
+        IOPLog.close();
     }
 
     private static void task2() {
