@@ -1,0 +1,15 @@
+/home/kali/Programming/Learning/Csharp/lab6/bin/Debug/net8.0/lab6
+/home/kali/Programming/Learning/Csharp/lab6/bin/Debug/net8.0/lab6.deps.json
+/home/kali/Programming/Learning/Csharp/lab6/bin/Debug/net8.0/lab6.runtimeconfig.json
+/home/kali/Programming/Learning/Csharp/lab6/bin/Debug/net8.0/lab6.dll
+/home/kali/Programming/Learning/Csharp/lab6/bin/Debug/net8.0/lab6.pdb
+/home/kali/Programming/Learning/Csharp/lab6/obj/Debug/net8.0/lab6.GeneratedMSBuildEditorConfig.editorconfig
+/home/kali/Programming/Learning/Csharp/lab6/obj/Debug/net8.0/lab6.AssemblyInfoInputs.cache
+/home/kali/Programming/Learning/Csharp/lab6/obj/Debug/net8.0/lab6.AssemblyInfo.cs
+/home/kali/Programming/Learning/Csharp/lab6/obj/Debug/net8.0/lab6.csproj.CoreCompileInputs.cache
+/home/kali/Programming/Learning/Csharp/lab6/obj/Debug/net8.0/lab6.sourcelink.json
+/home/kali/Programming/Learning/Csharp/lab6/obj/Debug/net8.0/lab6.dll
+/home/kali/Programming/Learning/Csharp/lab6/obj/Debug/net8.0/refint/lab6.dll
+/home/kali/Programming/Learning/Csharp/lab6/obj/Debug/net8.0/lab6.pdb
+/home/kali/Programming/Learning/Csharp/lab6/obj/Debug/net8.0/lab6.genruntimeconfig.cache
+/home/kali/Programming/Learning/Csharp/lab6/obj/Debug/net8.0/ref/lab6.dll
