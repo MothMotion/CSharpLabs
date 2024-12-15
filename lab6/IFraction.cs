@@ -1,6 +1,6 @@
-interface IFraction : ICloneable {
-    public int Numerator{get;}
-    public int Denumerator{get;}
+interface IFraction {
+    public int Numerator{set;}
+    public int Denumerator{set;}
 
     public double Value();
 }

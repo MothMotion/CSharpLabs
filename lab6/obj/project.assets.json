@@ -8,19 +8,19 @@
     "net8.0": []
   },
   "packageFolders": {
-    "/home/kali/.nuget/packages/": {}
+    "C:\\Users\\Binah\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/kali/Programming/Learning/Csharp/lab6/lab6.csproj",
+      "projectUniqueName": "C:\\Users\\Binah\\Desktop\\CSharp\\CSharpLabs\\lab6\\lab6.csproj",
       "projectName": "lab6",
-      "projectPath": "/home/kali/Programming/Learning/Csharp/lab6/lab6.csproj",
-      "packagesPath": "/home/kali/.nuget/packages/",
-      "outputPath": "/home/kali/Programming/Learning/Csharp/lab6/obj/",
+      "projectPath": "C:\\Users\\Binah\\Desktop\\CSharp\\CSharpLabs\\lab6\\lab6.csproj",
+      "packagesPath": "C:\\Users\\Binah\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Binah\\Desktop\\CSharp\\CSharpLabs\\lab6\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/home/kali/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\Binah\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
@@ -38,6 +38,11 @@
         "warnAsError": [
           "NU1605"
         ]
+      },
+      "restoreAuditProperties": {
+        "enableAudit": "true",
+        "auditLevel": "low",
+        "auditMode": "direct"
       }
     },
     "frameworks": {
@@ -54,18 +59,12 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "downloadDependencies": [
-          {
-            "name": "Microsoft.AspNetCore.App.Ref",
-            "version": "[8.0.7, 8.0.7]"
-          }
-        ],
         "frameworkReferences": {
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/8.0.107/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.303/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

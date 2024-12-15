@@ -1,7 +1,6 @@
-class Fraction : IFraction {
+class Fraction : IFraction, ICloneable {
     private int numerator;
     private int denumerator;
-    private double cachedValue;
     public int Numerator{get => numerator; set {numerator = denumerator; simplify();}}
     public int Denumerator{get => denumerator; set {
         if(value == 0) throw new Exception("0 не может быть знаменателем");
@@ -28,14 +27,12 @@ class Fraction : IFraction {
     public Fraction(int a) {
         numerator = a;
         denumerator = 1;
-        cachedValue = a;
     }
 
     private void simplify() {
         int nod = GCD(Math.Abs(numerator), denumerator);
         numerator /= nod;
         denumerator /= nod;
-        cachedValue = numerator/denumerator;
     }
 
     private static int GCD(int a, int b) { // НОД
@@ -90,9 +87,7 @@ class Fraction : IFraction {
         return new Fraction(numerator, denumerator);
     }
 
-    public double Value() {
-        return 0;
-    }
+    public double Value() => 0;
 
     public override string ToString() {
         return $"{numerator}/{denumerator}";
