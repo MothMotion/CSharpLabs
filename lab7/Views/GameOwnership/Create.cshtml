@@ -1,0 +1,87 @@
+@model Models.GameOwnership
+
+<html lang = "ru">
+<head>
+    <title>МегаКрутаяТабличкаИгр</title>
+    <link rel="stylesheet" type="text/css" href="~/css/styles.css" />
+</head>
+<body>
+<h2>Создать игру</h2>
+<form asp-action="Create" method="POST">
+    <div class="form-group">
+       <label asp-for="selected_player" for="selected_player">Выберите игрока:</label>
+       <select name="selected_player" id="selected-player" class="error">
+            <option value="">Выберите игрока</option>
+            @foreach (var player in ViewBag.Players) {
+                <option value="@player.Id">@player.Id : @player.Nickname</option>
+            }
+        </select>
+       <span asp-validation-for="Player" class="text-danger"></span>
+   </div>
+    <div class="form-group">
+        <label asp-for="selected_game">Выберите игру:</label>
+        <select name="selected_game" id="selected-game" class="error">
+            <option value="">Выберите серию игр</option>
+            @foreach (var game in ViewBag.Games) {
+                <option value="@game.Id">@game.Id : @game.Name</option>
+            }
+        </select>
+        <span asp-validation-for="Game" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label for="isgift">Подарок? :</label>
+        @Html.CheckBoxFor(model => model.IsGift)
+        <span asp-validation-for="isgift" class="text-danger"></span>
+    </div>
+    <button type="submit" id="saveButton" disabled="true" class="btn btn-primary">Создать</button>
+</form>
+<div>
+    <a asp-action="Index" href="../GameOwnership">Назад к списку покупок</a>
+</div>
+</body>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#selected-player').on('change', function() {
+            if ($(this).val()) {
+                $(this).removeClass('error'); // Убираем красную рамку, если выбран разработчик
+                if ($('#selected-game').val()) {
+                    $('#saveButton').prop('disabled', false); // Активируем кнопку
+                }
+            } else {
+                $(this).addClass('error'); // Добавляем красную рамку, если не выбран разработчик
+                $('#saveButton').prop('disabled', true); // Блокируем кнопку
+            }
+        });
+
+        $('#selected-game').on('change', function() {
+            if ($(this).val()) {
+                $(this).removeClass('error'); // Убираем красную рамку, если выбран разработчик
+                if ($('#selected-player').val()) {
+                    $('#saveButton').prop('disabled', false); // Активируем кнопку
+                }
+            } else {
+                $(this).addClass('error'); // Добавляем красную рамку, если не выбран разработчик
+                $('#saveButton').prop('disabled', true); // Блокируем кнопку
+            }
+        });
+        
+        $('#myForm').on('submit', function(event) {
+            var selectedPlayer = $('#selected-player').val();
+            var selectedGame = $('#selected-game').val();
+            if (!selectedPlayer || !selectedGame) {
+                event.preventDefault(); // Блокируем отправку формы
+                $('#selected-player').addClass('error'); // Добавляем класс ошибки
+                $('#selected-game').addClass('error');
+                $('#saveButton').prop('disabled', true); // Убеждаемся, что кнопка заблокирована
+            }
+        });
+    });
+</script>

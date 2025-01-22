@@ -1,0 +1,36 @@
+@model Models.Player
+
+<html lang = "ru">
+<head>
+    <title>МегаКрутаяТабличкаИгроков</title>
+    <link rel="stylesheet" type="text/css" href="~/css/styles.css" />
+</head>
+<body>
+    <h2>Редактировать игру</h2>
+
+    <form asp-action="Edit" method="POST">
+    <table>
+        <th class="DataCell">ID</th>
+        <th class="DataCell">Никнейм</th>
+        <th class="DataCell">Кошель</th>
+
+        <tr class="DataRow">
+            <td class="DataCell" name="Id"><input name="Id" type="hidden" value="@Model.Id" />@Model.Id</td>
+            <td class="DataCell"><input name="Nickname" value="@Model.Nickname"></td>
+            <td class="DataCell"><input name="MoneySum" value="@Model.MoneySum"></td>
+        </tr>
+    </table>
+
+    <button type="submit" class="btn btn-primary" id="saveButton">Сохранить</button>
+    </form>
+
+    <div>
+        <a asp-action="Index" class="btn btn-secondary" href="../">Назад к списку игр</a>
+    </div>
+</body>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

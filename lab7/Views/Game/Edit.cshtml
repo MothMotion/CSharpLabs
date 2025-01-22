@@ -1,0 +1,95 @@
+@model Models.Game
+
+<html lang = "ru">
+<head>
+    <title>МегаКрутаяТабличкаИгр</title>
+    <link rel="stylesheet" type="text/css" href="~/css/styles.css" />
+</head>
+<body>
+    <h2>Редактировать игру</h2>
+
+    <form asp-action="Edit" method="POST">
+    <table>
+        <th class="DataCell">ID</th>
+        <th class="DataCell">Название</th>
+        <th class="DataCell">Стоимость</th>
+        <th class="DataCell">Серии игр</th>
+        <th class="DataCell">Разработчик</th>
+        <th class="DataCell">Дата выпуска</th>
+        <th class="DataCell">Описание</th>
+
+        <tr>
+            <td class="DataCell" name="Id"><input name="Id" type="hidden" value="@Model.Id" />@Model.Id</td>
+            <td class="DataCell"><input name="Name" value="@Model.Name"></td>
+            <td class="DataCell"><input name="Cost" value="@Model.Cost"></td>
+            <td class="DataCell">
+                <select name="selected_series" value="">
+                    <option value="">Выберите серию игр</option>
+                    @foreach (var ser in ViewBag.GameSeries) {
+                        @if(Model.Series != null && ser.Id == Model.Series.Id) {
+                            <option value="@ser.Id" selected>@ser.Id : @ser.Name</option>
+                        } else {
+                            <option value="@ser.Id">@ser.Id : @ser.Name</option>
+                        }
+                    }
+                </select>
+            </td>
+            <td class="DataCell">
+                <select name="selected_dev" class="error" id="selected-dev">
+                    <option value="">Выберите разработчика</option>
+                    @foreach (var dev in ViewBag.Developers) {
+                        @if(Model.Developer.Id == dev.Id) {
+                            <option value="@dev.Id" selected>@dev.Id : @dev.Name</option>
+                        } else {
+                            <option value="@dev.Id">@dev.Id : @dev.Name</option>
+                        }
+                    }
+                </select>
+            </td>
+            <td class="DataCell"><input name="date" type="hidden" value="@Model.ReleaseDate.Date">@Model.ReleaseDate</td>
+            <td class="BigDataCell"><textarea name="Description" cols="60" rows="5">@Model.Description</textarea></td>
+        </tr>
+    </table>
+
+    <button type="submit" class="btn btn-primary" id="saveButton" disabled="true">Сохранить</button>
+    </form>
+
+    <div>
+        <a asp-action="Index" class="btn btn-secondary" href="../">Назад к списку игр</a>
+    </div>
+</body>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        if($('#selected-dev').val()) {
+            $('#selected-dev').removeClass('error');
+            $('#saveButton').prop('disabled', false);
+        }
+
+        $('#selected-dev').on('change', function() {
+            if ($(this).val()) {
+                $(this).removeClass('error'); // Убираем красную рамку, если выбран разработчик
+                $('#saveButton').prop('disabled', false); // Активируем кнопку
+            } else {
+                $(this).addClass('error'); // Добавляем красную рамку, если не выбран разработчик
+                $('#saveButton').prop('disabled', true); // Блокируем кнопку
+            }
+        });
+        
+        $('#myForm').on('submit', function(event) {
+            var selectedDev = $('#selected-dev').val();
+            if (!selectedDev) {
+                event.preventDefault(); // Блокируем отправку формы
+                $('#selected-dev').addClass('error'); // Добавляем класс ошибки
+                $('#saveButton').prop('disabled', true); // Убеждаемся, что кнопка заблокирована
+            }
+        });
+    });
+</script>

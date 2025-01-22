@@ -1,0 +1,27 @@
+@model Models.Series
+
+<html lang = "ru">
+<head>
+    <title>МегаКрутаяТабличкаСерииИгр</title>
+    <link rel="stylesheet" type="text/css" href="~/css/styles.css" />
+</head>
+<body>
+<h2>Создать серию игр</h2>
+<form asp-action="Create" method="POST">
+    <div class="form-group">
+       <label asp-for="Name" for="Name">Название:</label>
+       <input asp-for="Name" name="Name" for="Name" class="form-control"/>
+       <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary" id="saveButton">Сохранить</button>
+</form>
+<div>
+    <a asp-action="Index" href="../Series">Назад к списку серий игр</a>
+</div>
+</body>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

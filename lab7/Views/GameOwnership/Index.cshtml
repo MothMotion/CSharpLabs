@@ -1,0 +1,51 @@
+@model IEnumerable<Models.GameOwnership>
+<html lang = "ru">
+<head>
+    <title>МегаКрутаяТабличкаПокупок</title>
+    <link rel="stylesheet" type="text/css" href="~/css/styles.css" />
+</head>
+<body>
+    <h2>Покупки игр</h2>
+
+    <form method="post" action="@Url.Action("SaveChanges")">
+        <table>
+            <tr class="DataRow">
+                <th class="SmallDataCell"><input type="checkbox" id="select_all" /></th>
+                <th class="SmallDataCell">ID</th>
+                <th class="DataCell"><a href="Player">Игрок</a></th>
+                <th class="DataCell"><a href="Game">Игра</a></th>
+                <th class="DataCell">Подарок?</th>
+                <th class="DataCell">Дата</th>
+            </tr>
+                @foreach(var gOwn in Model)
+                {
+                    <tr class="DataRow">
+                        <td class="SmallDataCell"><input type="checkbox" name="selectedGOwn" value="@gOwn.Id" /></td>
+                        <td class="SmallDataCell">@gOwn.Id</td>
+                        <td class="DataCell">@gOwn.Player.Id : @gOwn.Player.Nickname</td>
+                        <td class="DataCell">@gOwn.Game.Id : @gOwn.Game.Name</td>
+                        <td class="DataCell">@gOwn.IsGift</td>
+                        <td class="DataCell">@gOwn.Date</td>
+                        <td class="DataCell">
+                            <a href="@Url.Action("Edit", new {id = gOwn.Id})">Изменить</a>
+                        </td>
+                    </tr>
+                }
+                <tr class="DataRow">
+                    <td><button type="submit" name="action" value="add">Добавить</button></td>
+                    <td><button type="submit" name="action" value="delete">Удалить выделенное</button></td>
+                </tr>
+        </table>
+        <a href="/">На главную</a>
+    </form>
+</body>
+</html>
+
+<script>
+    document.getElementById("select_all").onclick = function() {
+        let checkboxes = document.getElementsByName("selectedGOwn");
+        for (let checkbox of checkboxes) {
+            checkbox.checked = this.checked;
+        }
+    };
+</script>

@@ -1,0 +1,38 @@
+@model Models.Developer
+
+<html lang = "ru">
+<head>
+    <title>МегаКрутаяТабличкаРазрабов</title>
+    <link rel="stylesheet" type="text/css" href="~/css/styles.css" />
+</head>
+<body>
+    <h2>Редактировать разработчиков</h2>
+
+    <form asp-action="Edit" method="POST">
+    <table>
+        <th class="SmallDataCell">ID</th>
+        <th class="DataCell">Название</th>
+        <th class="SmallDataCell">Рейтинг</th>
+        <th class="DataCell">Количество рабочих</th>
+
+        <tr class="DataRow">
+            <td class="SmallDataCell" name="Id"><input name="Id" type="hidden" value="@Model.Id" />@Model.Id</td>
+            <td class="DataCell"><input name="Name" value="@Model.Name"></td>
+            <td class="SmallDataCell"><input name="Rating" value="@Model.Rating"></td>
+            <td class="DataCell"><input name="WAmount" value="@Model.WAmount"></td>
+        </tr>
+    </table>
+
+    <button type="submit" class="btn btn-primary" id="saveButton">Сохранить</button>
+    </form>
+
+    <div>
+        <a asp-action="Index" class="btn btn-secondary" href="../">Назад к списку игр</a>
+    </div>
+</body>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

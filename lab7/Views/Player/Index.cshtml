@@ -1,0 +1,48 @@
+@model IEnumerable<Models.Player>
+<html lang = "ru">
+<head>
+    <title>МегаКрутаяТабличкаИгроков</title>
+    <link rel="stylesheet" type="text/css" href="~/css/styles.css" />
+</head>
+<body>
+    <h2>Игроки</h2>
+
+    <form method="post" action="@Url.Action("SaveChanges")">
+        <table>
+            <tr class="DataRow">
+                <th class="SmallDataCell"><input type="checkbox" id="select_all" /></th>
+                <th class="SmallDataCell">ID</th>
+                <th class="DataCell">Имя</th>
+                <th class="DataCell">Кошель</th>
+            </tr>
+                @foreach(var player in Model)
+                {
+                    <tr class="DataRow">
+                        <td class="SmallDataCell"><input type="checkbox" name="selectedPlayers" value="@player.Id" /></td>
+                        <td class="SmallDataCell">@player.Id</td>
+                        <td class="DataCell">@player.Nickname</td>
+                        <td class="DataCell">@player.MoneySum</td>
+
+                        <td class="DataCell">
+                            <a href="@Url.Action("Edit", new {id = player.Id})">Изменить</a>
+                        </td>
+                    </tr>
+                }
+            <tr class="DataRow">
+                <td><button type="submit" name="action" value="add">Добавить</button></td>
+                <td><button type="submit" name="action" value="delete">Удалить выделенное</button></td>
+            </tr>
+        </table>
+        <a href="/">На главную</a>
+    </form>
+</body>
+</html>
+
+<script>
+    document.getElementById("select_all").onclick = function() {
+        let checkboxes = document.getElementsByName("selectedPlayers");
+        for (let checkbox of checkboxes) {
+            checkbox.checked = this.checked;
+        }
+    };
+</script>

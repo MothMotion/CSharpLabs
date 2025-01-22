@@ -1,0 +1,88 @@
+@model Models.Game
+
+<html lang = "ru">
+<head>
+    <title>МегаКрутаяТабличкаИгр</title>
+    <link rel="stylesheet" type="text/css" href="~/css/styles.css" />
+</head>
+<body>
+<h2>Создать игру</h2>
+<form asp-action="Create" method="POST">
+    <div class="form-group">
+       <label asp-for="Name" for="Name">Название:</label>
+       <input asp-for="Name" name="Name" for="Name" class="form-control"/>
+       <span asp-validation-for="Name" class="text-danger"></span>
+   </div>
+    <div class="form-group">
+        <label asp-for="cost">Стоимость:</label>
+        <input asp-for="cost" name="Cost" class="form-control" />
+        <span asp-validation-for="cost" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label for="selected_series">Серия игр:</label>
+        <select name="selected_series" class="form-control">
+            <option value="">Выберите серию игр</option>
+            @foreach (var ser in ViewBag.GameSeries) {
+                <option value="@ser.Id">@ser.Name</option>
+            }
+        </select>
+        <span asp-validation-for="Series" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label for="selected_dev">Разработчик:</label>
+        <select name="selected_dev" class="error" id="selected-dev">
+            <option value="">Выберите разработчика</option>
+            @foreach (var dev in ViewBag.Developers) {
+                <option value="@dev.Id">@dev.Name</option>
+            }
+        </select>
+        <span asp-validation-for="Developer" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="description">Описание:</label>
+        <input asp-for="description" name="Description" class="form-control" />
+        <span asp-validation-for="description" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary" id="saveButton" disabled="true">Сохранить</button>
+</form>
+<div>
+    <a asp-action="Index" href="../Game">Назад к списку игр</a>
+</div>
+</body>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#selected-dev').on('change', function() {
+            if ($(this).val()) {
+                $(this).removeClass('error'); // Убираем красную рамку, если выбран разработчик
+                $('#saveButton').prop('disabled', false); // Активируем кнопку
+            } else {
+                $(this).addClass('error'); // Добавляем красную рамку, если не выбран разработчик
+                $('#saveButton').prop('disabled', true); // Блокируем кнопку
+            }
+        });
+        
+        $('#selected-dev').on('focusout', function() {
+            if (!$(this).val()) {
+                $(this).addClass('error'); // Подсвечиваем, если поле пустое при потере фокуса
+                $('#saveButton').prop('disabled', true); // Блокируем кнопку
+            }
+        });
+        
+        $('#myForm').on('submit', function(event) {
+            var selectedDev = $('#selected-dev').val();
+            if (!selectedDev) {
+                event.preventDefault(); // Блокируем отправку формы
+                $('#selected-dev').addClass('error'); // Добавляем класс ошибки
+                $('#saveButton').prop('disabled', true); // Убеждаемся, что кнопка заблокирована
+            }
+        });
+    });
+</script>

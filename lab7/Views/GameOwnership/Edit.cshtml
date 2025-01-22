@@ -1,0 +1,113 @@
+@model Models.GameOwnership
+
+<html lang = "ru">
+<head>
+    <title>МегаКрутаяТабличкаПокупок</title>
+    <link rel="stylesheet" type="text/css" href="~/css/styles.css" />
+</head>
+<body>
+    <h2>Редактировать игру</h2>
+
+    <form asp-action="Edit" method="POST">
+    <table>
+        <th class="SmallDataCell">ID</th>
+        <th class="SmallDataCell">ID игрока</th>
+        <th class="SmallDataCell">ID игры</th>
+        <th class="SmallDataCell">Подарок?</th>
+        <th class="DataCell">Дата покупки</th>
+
+        <tr>
+            <td class="SmallDataCell" name="Id"><input name="Id" type="hidden" value="@Model.Id" />@Model.Id</td>
+            <td class="SmallDataCell">
+                <select name="selected_player" id="selected-player" class="error">
+                    <option value="">Выберите игрока</option>
+                    @foreach (var player in ViewBag.Players) {
+                        @if(player.Id == Model.Player.Id) {
+                            <option value="@player.Id" selected>@player.Id : @player.Nickname</option>
+                        } else {
+                            <option value="@player.Id">@player.Id : @player.Nickname</option>
+                        }
+                    }
+                </select>
+                <span asp-validation-for="Player" class="text-danger"></span>
+            </td>
+            <td class="SmallDataCell">
+                <select name="selected_game" id="selected-game" class="error">
+                    <option value="">Выберите серию игр</option>
+                    @foreach (var game in ViewBag.Games) {
+                        @if(game.Id == Model.Game.Id) {
+                            <option value="@game.Id" selected>@game.Id : @game.Name</option>
+                        } else {
+                            <option value="@game.Id">@game.Id : @game.Name</option>
+                        }
+                    }
+                </select>
+                <span asp-validation-for="Game" class="text-danger"></span>
+            </td>
+            <td class="SmallDataCell">
+                @Html.CheckBoxFor(model => model.IsGift)
+                <span asp-validation-for="isgift" class="text-danger"></span>
+            </td>
+            <td class="DataCell">@Model.Date</td>
+        </tr>
+    </table>
+
+    <button type="submit" class="btn btn-primary" id="saveButton" disabled="true">Сохранить</button>
+    </form>
+
+    <div>
+        <a asp-action="Index" class="btn btn-secondary" href="../">Назад к списку покупок</a>
+    </div>
+</body>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        if ($('#selected-player').val() && $('#selected-game').val()) {
+            $('#selected-player').removeClass('error');
+            $('#selected-game').removeClass('error');
+            $('#saveButton').prop('disabled', false);
+        };
+
+        $('#selected-player').on('change', function() {
+            if ($(this).val()) {
+                $(this).removeClass('error'); // Убираем красную рамку, если выбран разработчик
+                if ($('#selected-game').val()) {
+                    $('#saveButton').prop('disabled', false); // Активируем кнопку
+                }
+            } else {
+                $(this).addClass('error'); // Добавляем красную рамку, если не выбран разработчик
+                $('#saveButton').prop('disabled', true); // Блокируем кнопку
+            }
+        });
+
+        $('#selected-game').on('change', function() {
+            if ($(this).val()) {
+                $(this).removeClass('error'); // Убираем красную рамку, если выбран разработчик
+                if ($('#selected-player').val()) {
+                    $('#saveButton').prop('disabled', false); // Активируем кнопку
+                }
+            } else {
+                $(this).addClass('error'); // Добавляем красную рамку, если не выбран разработчик
+                $('#saveButton').prop('disabled', true); // Блокируем кнопку
+            }
+        });
+        
+        $('#myForm').on('submit', function(event) {
+            var selectedPlayer = $('#selected-player').val();
+            var selectedGame = $('#selected-game').val();
+            if (!selectedPlayer || !selectedGame) {
+                event.preventDefault(); // Блокируем отправку формы
+                $('#selected-player').addClass('error'); // Добавляем класс ошибки
+                $('#selected-game').addClass('error');
+                $('#saveButton').prop('disabled', true); // Убеждаемся, что кнопка заблокирована
+            }
+        });
+    });
+</script>

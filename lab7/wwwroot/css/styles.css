@@ -1,0 +1,70 @@
+@font-face {
+    font-family: 'Impact';
+    src: url('fonts/ofont.ru_Impact.ttf') format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Comic-Sans';
+    src: url('fonts/Comic\ Sans\ MS.ttf') format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    background-color: #f0f0f0;
+    font-family: Impact, bold;
+}
+
+button {
+    font-family: "Comic-Sans", bold;
+    font-style: oblique;
+    font-size: large;
+    color: brown;
+    background-color: rgb(170, 170, 200);
+}
+
+button:disabled,
+button[disabled] {
+  color: #850a0a;
+  background-color: rgb(60,30,30);
+}
+
+button:hover {
+  color: #c54a4a;
+  background-color: rgb(90,90,120);
+}
+
+a {
+    font-family: Impact, bold;
+    font-style: normal;
+    color: brown;
+}
+
+input[type="checkbox"] {
+    transform: scale(2);
+}
+
+.SmallDataCell {
+    width: 5%;
+    height: 100px;
+    text-align: center;
+}
+
+.DataCell {
+    width: 10%;
+    height: 100px;
+    text-align: center;
+}
+
+.BigDataCell {
+    width: 100%;
+    height: 100px;
+    overflow: auto;
+    text-align: center;
+}
+
+.error {
+    border: 5px solid rgb(190, 16, 16);
+}

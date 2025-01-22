@@ -1,0 +1,46 @@
+@model IEnumerable<Models.Series>
+<html lang = "ru">
+<head>
+    <title>МегаКрутаяТабличкаСерийИгр</title>
+    <link rel="stylesheet" type="text/css" href="~/css/styles.css" />
+</head>
+<body>
+    <h2>Серии игр</h2>
+
+    <form method="post" action="@Url.Action("SaveChanges")">
+        <table>
+            <tr class="DataRow">
+                <th class="SmallDataCell"><input type="checkbox" id="select_all" /></th>
+                <th class="SmallDataCell">ID</th>
+                <th class="DataCell">Название</th>
+            </tr>
+                @foreach(var serie in Model)
+                {
+                    <tr class="DataRow">
+                        <td class="SmallDataCell"><input type="checkbox" name="selectedDevelopers" value="@serie.Id" /></td>
+                        <td class="SmallDataCell">@serie.Id</td>
+                        <td class="DataCell">@serie.Name</td>
+
+                        <td class="DataCell">
+                            <a href="@Url.Action("Edit", new {id = serie.Id})">Изменить</a>
+                        </td>
+                    </tr>
+                }
+            <tr class="DataRow">
+                <td><button type="submit" name="action" value="add">Добавить</button></td>
+                <td><button type="submit" name="action" value="delete">Удалить выделенное</button></td>
+            </tr>
+        </table>
+        <a href="/">На главную</a>
+    </form>
+</body>
+</html>
+
+<script>
+    document.getElementById("select_all").onclick = function() {
+        let checkboxes = document.getElementsByName("selectedDevelopers");
+        for (let checkbox of checkboxes) {
+            checkbox.checked = this.checked;
+        }
+    };
+</script>

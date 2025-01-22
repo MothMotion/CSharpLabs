@@ -1,0 +1,59 @@
+@model IEnumerable<Models.Game>
+<html lang = "ru">
+<head>
+    <title>МегаКрутаяТабличкаИгр</title>
+    <link rel="stylesheet" type="text/css" href="~/css/styles.css" />
+</head>
+<body>
+    <h2>Игры</h2>
+
+    <form method="post" action="@Url.Action("SaveChanges")">
+        <table>
+            <tr class="DataRow">
+                <th class="SmallDataCell"><input type="checkbox" id="select_all" /></th>
+                <th class="SmallDataCell">ID</th>
+                <th class="DataCell">Название</th>
+                <th class="DataCell">Стоимость</th>
+                <th class="DataCell"><a href="Series">Серии игр</a></th>
+                <th class="DataCell"><a href="Developer">Разработчик</a></th>
+                <th class="DataCell">Дата выпуска</th>
+                <th class="DataCell">Описание</th>
+            </tr>
+                @foreach(var game in Model)
+                {
+                    <tr class="DataRow">
+                        <td class="SmallDataCell"><input type="checkbox" name="selectedGames" value="@game.Id" /></td>
+                        <td class="SmallDataCell">@game.Id</td>
+                        <td class="DataCell">@game.Name</td>
+                        <td class="DataCell">@game.Cost</td>
+                        <td class="DataCell">@game.Series</td>
+                        <td class="DataCell">@game.Developer</td>
+                        <td class="DataCell">@game.ReleaseDate.Date</td>
+                        <td class="DataCell">
+                            <div class="BigDataCell">
+                                @game.Description
+                            </div>
+                        </td>
+                        <td class="DataCell">
+                            <a href="@Url.Action("Edit", new {id = game.Id})">Изменить</a>
+                        </td>
+                    </tr>
+                }
+                <tr class="DataRow">
+                    <td><button type="submit" name="action" value="add">Добавить</button></td>
+                    <td><button type="submit" name="action" value="delete">Удалить выделенное</button></td>
+                </tr>
+        </table>
+        <a href="/">На главную</a>
+    </form>
+</body>
+</html>
+
+<script>
+    document.getElementById("select_all").onclick = function() {
+        let checkboxes = document.getElementsByName("selectedGames");
+        for (let checkbox of checkboxes) {
+            checkbox.checked = this.checked;
+        }
+    };
+</script>
